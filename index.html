@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOD Yt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Animated red background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 40%);
+    animation: moveBg 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBg {
+    0% { transform: translate(-10%, -10%); }
+    50% { transform: translate(-20%, -15%); }
+    100% { transform: translate(-10%, -10%); }
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in;
+}
+
+/* Floating logo */
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 25px red);
+    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 10px red); }
+    to { filter: drop-shadow(0 0 30px red); }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero p {
+    font-size: 18px;
+    color: #ccc;
+    max-width: 600px;
+}
+
+/* Social icons */
+.social {
+    margin-top: 25px;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border: 2px solid red;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 0 12px red;
+}
+
+.icon-btn:hover {
+    background: red;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 35px red;
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: #ff1a1a;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px red;
+}
+
+/* About */
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Videos */
+.videos iframe {
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    margin: 15px;
+    border: 2px solid red;
+    box-shadow: 0 0 20px red;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid red;
+}
+
+footer a {
+    color: red;
+    margin: 0 12px;
+    font-size: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <img src="logo.jpg" class="logo" alt="Logo">
+
+    <p>I am a gaming content creator. Follow me for gameplay videos, shorts, and updates.</p>
+
+    <div class="social">
+        <a class="icon-btn" href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <a class="icon-btn" href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</div>
+
+<section class="about">
+    <h2>About Me</h2>
+    <p>
+        I am passionate about gaming and content creation. I create gameplay videos,
+        shorts, and entertaining content for my audience. My goal is to build a strong
+        gaming community and share epic gaming moments.
+    </p>
+</section>
+
+<section class="videos">
+    <h2>Latest Content</h2>
+    <iframe 
+        src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+</section>
+
+<footer>
+    <a href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm"><i class="fab fa-instagram"></i></a>
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
