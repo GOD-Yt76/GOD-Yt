@@ -18,44 +18,58 @@
 body {
     color: white;
     text-align: center;
-    background: url('bgmi.jpg') no-repeat center/cover;
+    background: black;
+    overflow-x: hidden;
 }
 
-/* Dark overlay */
+/* 🔥 ANIMATED BG */
 body::before {
     content: "";
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    top: 0;
-    left: 0;
-    z-index: -1;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.2), transparent 40%);
+    animation: moveBg 8s linear infinite;
+    z-index: -2;
 }
 
-/* CLOSE BUTTON (X) */
+body::after {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.1), transparent 50%);
+    animation: moveBg2 12s linear infinite;
+    z-index: -3;
+}
+
+@keyframes moveBg {
+    0% { transform: translate(-10%, -10%); }
+    50% { transform: translate(-20%, -15%); }
+    100% { transform: translate(-10%, -10%); }
+}
+
+@keyframes moveBg2 {
+    0% { transform: translate(0%, 0%); }
+    50% { transform: translate(-15%, -10%); }
+    100% { transform: translate(0%, 0%); }
+}
+
+/* ❌ CLEAN CLOSE BUTTON */
 .close-btn {
     position: fixed;
     top: 15px;
     right: 20px;
-    font-size: 32px;
-    color: white;
+    font-size: 40px;
+    color: red;
     text-decoration: none;
-    border: 2px solid red;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
     transition: 0.3s;
-    box-shadow: 0 0 10px red;
 }
 
 .close-btn:hover {
-    background: red;
-    transform: scale(1.1) rotate(90deg);
-    box-shadow: 0 0 30px red;
+    transform: scale(1.2) rotate(90deg);
+    color: white;
+    text-shadow: 0 0 20px red;
 }
 
 /* HEADER */
@@ -129,7 +143,7 @@ header {
 
 <body>
 
-<!-- CLOSE BUTTON -->
+<!-- ❌ CLOSE -->
 <a href="index.html" class="close-btn">&times;</a>
 
 <header>🔥 BGMI TOURNAMENTS 🔥</header>
