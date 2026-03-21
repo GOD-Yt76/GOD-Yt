@@ -126,9 +126,14 @@ body::before {
 
 .hero p {
     color: #ccc;
+    max-width: 600px;
 }
 
 /* SOCIAL */
+.social {
+    margin-top: 25px;
+}
+
 .icon-btn {
     display: inline-flex;
     width: 60px;
@@ -164,52 +169,14 @@ section.show {
 
 h2 {
     color: red;
+    margin-bottom: 20px;
 }
 
-/* TOURNAMENT */
-.tournament-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    border: 2px solid red;
-    padding: 20px;
-    border-radius: 10px;
-    transition: 0.4s;
-    position: relative;
-    overflow: hidden;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px red;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(120deg, transparent, rgba(255,0,0,0.4), transparent);
-    top: -100%;
-    left: -100%;
-    transition: 0.6s;
-}
-
-.card:hover::before {
-    top: 100%;
-    left: 100%;
-}
-
-.join-btn {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: red;
-    border: none;
-    color: white;
-    cursor: pointer;
+/* ABOUT */
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #ccc;
 }
 
 /* VIDEOS */
@@ -219,11 +186,19 @@ iframe {
     height: 400px;
     margin-top: 20px;
     border: 2px solid red;
+    box-shadow: 0 0 20px red;
 }
 
 /* FOOTER */
 footer {
+    background: #000;
     padding: 20px;
+    border-top: 2px solid red;
+}
+
+footer i {
+    margin: 0 10px;
+    font-size: 22px;
 }
 </style>
 </head>
@@ -232,80 +207,59 @@ footer {
 
 <!-- MENU -->
 <div class="menu-btn" id="menuBtn">
-<span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
 <nav class="side-nav" id="sideNav">
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#tournaments">Tournaments</a>
-<a href="#videos">Videos</a>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="tournaments.html">Tournaments</a>
+    <a href="#videos">Videos</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-<img src="logo.jpg" class="logo">
-<p>Gaming content creator | BGMI tournaments & scrims 🔥</p>
+    <img src="logo.jpg" class="logo" alt="Logo">
 
-<div>
-<a class="icon-btn" href="#"><i class="fab fa-youtube"></i></a>
-<a class="icon-btn" href="#"><i class="fab fa-instagram"></i></a>
-</div>
+    <p>I am a gaming content creator. Follow me for gameplay videos, shorts, and tournaments 🔥</p>
+
+    <div class="social">
+        <a class="icon-btn" href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <a class="icon-btn" href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about">
-<h2>About Me</h2>
-<p>I create gameplay videos and host tournaments.</p>
-</section>
-
-<!-- TOURNAMENT -->
-<section id="tournaments">
-<h2>🔥 Tournaments</h2>
-<div class="tournament-grid">
-
-<div class="card">
-<h3>Weekly Scrims</h3>
-<p>Practice matches</p>
-<button class="join-btn">Join</button>
-</div>
-
-<div class="card">
-<h3>Saturday Blast</h3>
-<p>Weekend battles</p>
-<button class="join-btn">Join</button>
-</div>
-
-<div class="card">
-<h3>Sunday Blast</h3>
-<p>Final fights</p>
-<button class="join-btn">Join</button>
-</div>
-
-<div class="card">
-<h3>TDM 1v1</h3>
-<p>Prove your aim</p>
-<button class="join-btn">Join</button>
-</div>
-
-<div class="card">
-<h3>Prize Pool</h3>
-<p>Win rewards</p>
-<button class="join-btn">Join</button>
-</div>
-
-</div>
+<section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+        I am passionate about gaming and content creation. I create gameplay videos,
+        shorts, and entertaining content for my audience. I also host BGMI tournaments
+        like scrims, blasts, and prize matches.
+    </p>
 </section>
 
 <!-- VIDEOS -->
 <section id="videos">
-<h2>Latest Videos</h2>
-<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"></iframe>
+    <h2>Latest Content</h2>
+    <iframe 
+        src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<i class="fab fa-youtube"></i>
-<i class="fab fa-instagram"></i>
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-instagram"></i>
 </footer>
 
 <script>
@@ -317,7 +271,7 @@ menuBtn.onclick = () => {
     sideNav.classList.toggle("active");
 };
 
-// Close menu on click
+// Close menu when clicking link
 document.querySelectorAll(".side-nav a").forEach(link => {
     link.onclick = () => {
         sideNav.classList.remove("active");
@@ -338,4 +292,4 @@ window.addEventListener("scroll", () => {
 </script>
 
 </body>
-    </html>
+</html>
