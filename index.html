@@ -22,7 +22,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated red background */
+/* Animated background */
 body::before {
     content: "";
     position: fixed;
@@ -39,6 +39,65 @@ body::before {
     100% { transform: translate(-10%, -10%); }
 }
 
+/* HAMBURGER */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.menu-btn span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: red;
+    margin: 6px 0;
+    transition: 0.4s;
+    box-shadow: 0 0 10px red;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* SIDE NAV */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: black;
+    padding-top: 80px;
+    transition: 0.4s;
+    box-shadow: -5px 0 20px red;
+    z-index: 999;
+}
+
+.side-nav.active {
+    right: 0;
+}
+
+.side-nav a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+}
+
+.side-nav a:hover {
+    background: red;
+}
+
 /* HERO */
 .hero {
     height: 100vh;
@@ -47,21 +106,17 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: fadeIn 1.5s ease-in;
 }
 
-/* Floating logo */
 .logo {
     width: 200px;
     margin-bottom: 20px;
     filter: drop-shadow(0 0 25px red);
-    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
     50% { transform: translateY(-12px); }
-    100% { transform: translateY(0px); }
 }
 
 @keyframes glow {
@@ -69,46 +124,31 @@ body::before {
     to { filter: drop-shadow(0 0 30px red); }
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .hero p {
-    font-size: 18px;
     color: #ccc;
-    max-width: 600px;
 }
 
-/* Social icons */
-.social {
-    margin-top: 25px;
-}
-
+/* SOCIAL */
 .icon-btn {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 60px;
     height: 60px;
-    margin: 10px;
     border: 2px solid red;
     border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
     color: white;
     font-size: 24px;
-    text-decoration: none;
     transition: 0.3s;
-    box-shadow: 0 0 12px red;
 }
 
 .icon-btn:hover {
     background: red;
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 35px red;
+    transform: scale(1.1);
 }
 
-/* Sections */
+/* SECTIONS */
 section {
     padding: 60px 20px;
     text-align: center;
@@ -123,93 +163,174 @@ section.show {
 }
 
 h2 {
-    color: #ff1a1a;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px red;
+    color: red;
 }
 
-/* About */
-.about p {
-    max-width: 700px;
-    margin: auto;
-    color: #ccc;
-    line-height: 1.6;
+/* TOURNAMENT */
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-/* Videos */
-.videos iframe {
+.card {
+    border: 2px solid red;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px red;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(120deg, transparent, rgba(255,0,0,0.4), transparent);
+    top: -100%;
+    left: -100%;
+    transition: 0.6s;
+}
+
+.card:hover::before {
+    top: 100%;
+    left: 100%;
+}
+
+.join-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* VIDEOS */
+iframe {
     width: 90%;
     max-width: 800px;
     height: 400px;
-    margin: 15px;
+    margin-top: 20px;
     border: 2px solid red;
-    box-shadow: 0 0 20px red;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
-    background: #000;
     padding: 20px;
-    text-align: center;
-    border-top: 2px solid red;
-}
-
-footer a {
-    color: red;
-    margin: 0 12px;
-    font-size: 22px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-    <img src="logo.jpg" class="logo" alt="Logo">
-
-    <p>I am a gaming content creator. Follow me for gameplay videos, shorts, and updates.</p>
-
-    <div class="social">
-        <a class="icon-btn" href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8" target="_blank">
-            <i class="fab fa-youtube"></i>
-        </a>
-
-        <a class="icon-btn" href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
+<!-- MENU -->
+<div class="menu-btn" id="menuBtn">
+<span></span><span></span><span></span>
 </div>
 
-<section class="about">
-    <h2>About Me</h2>
-    <p>
-        I am passionate about gaming and content creation. I create gameplay videos,
-        shorts, and entertaining content for my audience. My goal is to build a strong
-        gaming community and share epic gaming moments.
-    </p>
+<nav class="side-nav" id="sideNav">
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#tournaments">Tournaments</a>
+<a href="#videos">Videos</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<img src="logo.jpg" class="logo">
+<p>Gaming content creator | BGMI tournaments & scrims 🔥</p>
+
+<div>
+<a class="icon-btn" href="#"><i class="fab fa-youtube"></i></a>
+<a class="icon-btn" href="#"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Me</h2>
+<p>I create gameplay videos and host tournaments.</p>
 </section>
 
-<section class="videos">
-    <h2>Latest Content</h2>
-    <iframe 
-        src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"
-        frameborder="0" 
-        allowfullscreen>
-    </iframe>
+<!-- TOURNAMENT -->
+<section id="tournaments">
+<h2>🔥 Tournaments</h2>
+<div class="tournament-grid">
+
+<div class="card">
+<h3>Weekly Scrims</h3>
+<p>Practice matches</p>
+<button class="join-btn">Join</button>
+</div>
+
+<div class="card">
+<h3>Saturday Blast</h3>
+<p>Weekend battles</p>
+<button class="join-btn">Join</button>
+</div>
+
+<div class="card">
+<h3>Sunday Blast</h3>
+<p>Final fights</p>
+<button class="join-btn">Join</button>
+</div>
+
+<div class="card">
+<h3>TDM 1v1</h3>
+<p>Prove your aim</p>
+<button class="join-btn">Join</button>
+</div>
+
+<div class="card">
+<h3>Prize Pool</h3>
+<p>Win rewards</p>
+<button class="join-btn">Join</button>
+</div>
+
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+<h2>Latest Videos</h2>
+<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"></iframe>
 </section>
 
 <footer>
-    <a href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm"><i class="fab fa-instagram"></i></a>
+<i class="fab fa-youtube"></i>
+<i class="fab fa-instagram"></i>
 </footer>
 
 <script>
+const menuBtn = document.getElementById("menuBtn");
+const sideNav = document.getElementById("sideNav");
+
+menuBtn.onclick = () => {
+    menuBtn.classList.toggle("active");
+    sideNav.classList.toggle("active");
+};
+
+// Close menu on click
+document.querySelectorAll(".side-nav a").forEach(link => {
+    link.onclick = () => {
+        sideNav.classList.remove("active");
+        menuBtn.classList.remove("active");
+    };
+});
+
+// Scroll animation
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
     sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
             sec.classList.add("show");
         }
     });
@@ -217,4 +338,4 @@ window.addEventListener("scroll", () => {
 </script>
 
 </body>
-</html>
+    </html>
